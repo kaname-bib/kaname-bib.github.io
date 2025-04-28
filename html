@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAY OS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="taskbar">
+        <button onclick="openNotepad()">メモ帳</button>
+        <button onclick="openAudioPlayer()">音楽プレーヤー</button>
+        <button onclick="openPhotoApp()">フォトアプリ</button>
+        <button onclick="openCamera()">カメラ</button>
+    </div>
+
+    <div id="notepadWindow" class="window" style="display: none;">
+        <div class="window-header">
+            <span>メモ帳</span>
+            <button onclick="closeWindow('notepadWindow')">×</button>
+        </div>
+        <textarea id="notepad" placeholder="メモをここに書いてください..." rows="5"></textarea>
+    </div>
+
+    <div id="audioPlayerWindow" class="window" style="display: none;">
+        <div class="window-header">
+            <span>音楽プレーヤー</span>
+            <button onclick="closeWindow('audioPlayerWindow')">×</button>
+        </div>
+        <audio controls>
+            <source src="sample.mp3" type="audio/mpeg">
+            お使いのブラウザはaudioタグに対応していません。
+        </audio>
+    </div>
+
+    <div id="photoAppWindow" class="window" style="display: none;">
+        <div class="window-header">
+            <span>フォトアプリ</span>
+            <button onclick="closeWindow('photoAppWindow')">×</button>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" onchange="previewImage(event)">
+        <img id="imagePreview" src="" alt="プレビュー" style="display: none; max-width: 100%; margin-top: 10px;">
+    </div>
+
+    <div id="cameraWindow" class="window" style="display: none;">
+        <div class="window-header">
+            <span>カメラ</span>
+            <button onclick="closeWindow('cameraWindow')">×</button>
+        </div>
+        <video id="video" width="320" height="240" autoplay></video>
+        <button id="capture">写真を撮る</button>
+        <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+        <img id="photoPreview" src="" alt="撮影した写真" style="display: none; max-width: 100%; margin-top: 10px;">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
